@@ -12,6 +12,7 @@
 #include "inet.h"
 #include "options.h"
 #include "tcp.h"
+#include "buffer.h"
 
 /*=========================================================================*\
 * Internal function prototypes
