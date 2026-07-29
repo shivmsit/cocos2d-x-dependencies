@@ -20,3 +20,4 @@ source tree.
 | FastLZ | `fastlz` | Recast `1.6.0` snapshot | `6dc1667f580357e8a2154c28b7867bea7e8ad3a7` | https://github.com/recastnavigation/recastnavigation/tree/v1.6.0/RecastDemo/Contrib/fastlz | MIT | Bundle3D compression | Preserved from the Recast 1.6.0 FastLZ contribution. |
 | RapidJSON | `json` | `main` snapshot | `24b5e7a8b27f42fa16b96fc70aade9106cf7102f` | https://github.com/Tencent/rapidjson | MIT | JSON parsing and serialization | Tests, examples, generated documentation, binaries, and CI assets omitted. |
 | tinyxml2 | `tinyxml2` | `main` snapshot | `8224e427b655b83dae5e2298f1e6919523a78737` | https://github.com/leethomason/tinyxml2 | Zlib | XML parsing | Tests, examples, images, contributed files, and generated documentation omitted. |
+| tinydir | `tinydir` | `master` snapshot | `a4a2db51af5fd5146eb1d7bcc72610c7bfa28ebb` | https://github.com/cxong/tinydir | BSD-2-Clause | Windows directory traversal | Tests and samples omitted. |
