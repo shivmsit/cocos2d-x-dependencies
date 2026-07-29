@@ -14,3 +14,4 @@ source tree.
 | libwebp | `webp` | `1.6.0` | `4fa21912338357f89e4fd51cf2368325b59e9bd9` | https://chromium.googlesource.com/webm/libwebp | BSD-3-Clause | WebP image decoding | Tests, tools, examples, JavaScript builds, Gradle files, and generated documentation omitted. |
 | libtiff | `tiff` | `4.7.2` | `d01a94be176f5f6a87f7ee1c0b32e65416aa2b4d` | https://gitlab.com/libtiff/libtiff | libtiff | TIFF image decoding | Tests, command-line tools, contributed code, archives, and generated documentation omitted. |
 | Bullet | `bullet` | `3.25` | `2c204c49e56ed15ec5fcfa71d199ab6d6570b3f5` | https://github.com/bulletphysics/bullet3 | Zlib | 3D physics | Examples, data, documentation, tests, Bullet 3 extras, and generated build trees omitted; Cocos uses the Bullet 2 API. |
+| Box2D | `Box2D` | `3.1.1` | `8c661469c9507d3ad6fbd2fea3f1aa71669c2fe3` | https://github.com/erincatto/box2d | MIT | Optional 2D physics | Samples, benchmarks, tests, documentation, and CI files omitted. |
