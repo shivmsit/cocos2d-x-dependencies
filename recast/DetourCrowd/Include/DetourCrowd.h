@@ -269,6 +269,12 @@ public:
 	/// @return The requested agent.
 	dtCrowdAgent* getEditableAgent(const int idx);
 
+	/// Gets the off-mesh animation state for the specified agent.
+	/// Cocos2d-x uses this to report link endpoints and control automatic
+	/// traversal. Recast 1.6 still owns this state internally.
+	/// @return The requested agent animation, or null for an invalid index.
+	dtCrowdAgentAnimation* getEditableAgentAnim(const int idx);
+
 	/// The maximum number of agents that can be managed by the object.
 	/// @return The maximum number of agents.
 	int getAgentCount() const;
