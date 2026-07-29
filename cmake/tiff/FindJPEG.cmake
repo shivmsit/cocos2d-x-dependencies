@@ -1,0 +1,13 @@
+# Bind libtiff's JPEG codec to Cocos' vendored IJG JPEG target.
+if(NOT TARGET jpeg)
+  message(FATAL_ERROR "Cocos libtiff requires the jpeg target")
+endif()
+if(NOT TARGET JPEG::JPEG)
+  add_library(JPEG::JPEG ALIAS jpeg)
+endif()
+get_filename_component(_cocos_external_dir "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+set(JPEG_FOUND TRUE)
+set(JPEG_LIBRARIES JPEG::JPEG)
+set(JPEG_INCLUDE_DIR "${_cocos_external_dir}/jpeg")
+set(JPEG_INCLUDE_DIRS "${JPEG_INCLUDE_DIR}")
+unset(_cocos_external_dir)

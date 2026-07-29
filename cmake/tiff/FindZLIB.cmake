@@ -1,0 +1,15 @@
+# Bind libtiff's configure-time find_package(ZLIB) to Cocos' source-built
+# zlib.  Do not let a host SDK leak into a cross-platform prebuilt.
+if(NOT TARGET zlibstatic)
+  message(FATAL_ERROR "Cocos libtiff requires the zlibstatic target")
+endif()
+if(NOT TARGET ZLIB::ZLIB)
+  add_library(ZLIB::ZLIB ALIAS zlibstatic)
+endif()
+get_filename_component(_cocos_external_dir "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+set(ZLIB_FOUND TRUE)
+set(ZLIB_VERSION_STRING "1.3.2")
+set(ZLIB_LIBRARIES ZLIB::ZLIB)
+set(ZLIB_INCLUDE_DIR "${_cocos_external_dir}/zlib")
+set(ZLIB_INCLUDE_DIRS "${ZLIB_INCLUDE_DIR}")
+unset(_cocos_external_dir)
