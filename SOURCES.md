@@ -21,3 +21,4 @@ source tree.
 | RapidJSON | `json` | `main` snapshot | `24b5e7a8b27f42fa16b96fc70aade9106cf7102f` | https://github.com/Tencent/rapidjson | MIT | JSON parsing and serialization | Tests, examples, generated documentation, binaries, and CI assets omitted. |
 | tinyxml2 | `tinyxml2` | `main` snapshot | `8224e427b655b83dae5e2298f1e6919523a78737` | https://github.com/leethomason/tinyxml2 | Zlib | XML parsing | Tests, examples, images, contributed files, and generated documentation omitted. |
 | tinydir | `tinydir` | `master` snapshot | `a4a2db51af5fd5146eb1d7bcc72610c7bfa28ebb` | https://github.com/cxong/tinydir | BSD-2-Clause | Windows directory traversal | Tests and samples omitted. |
+| xxHash | `xxhash` | `0.8.3` | `e626a72bc2321cd320e953a0ccf1584cad60f363` | https://github.com/Cyan4973/xxHash | BSD-2-Clause | Fast hashing | Tests, command-line tools, fuzzing assets, and generated documentation omitted. |
