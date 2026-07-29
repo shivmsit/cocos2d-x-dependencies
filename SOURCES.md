@@ -15,3 +15,4 @@ source tree.
 | libtiff | `tiff` | `4.7.2` | `d01a94be176f5f6a87f7ee1c0b32e65416aa2b4d` | https://gitlab.com/libtiff/libtiff | libtiff | TIFF image decoding | Tests, command-line tools, contributed code, archives, and generated documentation omitted. |
 | Bullet | `bullet` | `3.25` | `2c204c49e56ed15ec5fcfa71d199ab6d6570b3f5` | https://github.com/bulletphysics/bullet3 | Zlib | 3D physics | Examples, data, documentation, tests, Bullet 3 extras, and generated build trees omitted; Cocos uses the Bullet 2 API. |
 | Box2D | `Box2D` | `3.1.1` | `8c661469c9507d3ad6fbd2fea3f1aa71669c2fe3` | https://github.com/erincatto/box2d | MIT | Optional 2D physics | Samples, benchmarks, tests, documentation, and CI files omitted. |
+| Chipmunk2D | `chipmunk` | `7.0.3` | `87340c216bf97554dc552371bbdecf283f7c540e` | https://github.com/slembcke/Chipmunk2D | MIT | Optional 2D physics | Demos, documentation, tests, IDE projects, Objective-C bindings, and release tools omitted. |
