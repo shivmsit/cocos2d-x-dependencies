@@ -105,7 +105,8 @@ ExternalProject_Add(cocos_openssl
     CONFIGURE_COMMAND ${_cocos_openssl_env}
         "${_cocos_openssl_perl}" "${_cocos_openssl_source_dir}/Configure" "${_cocos_openssl_target}"
         ${_cocos_openssl_platform_args}
-        no-shared no-pinshared no-tests no-apps no-docs "--prefix=${_cocos_openssl_stage_dir}"
+        no-shared no-pinshared no-tests no-apps no-docs no-demos
+        no-fuzz-afl no-fuzz-libfuzzer "--prefix=${_cocos_openssl_stage_dir}"
     BUILD_COMMAND ${_cocos_openssl_env} "${_cocos_openssl_make}" "-j${_cocos_openssl_jobs}" build_libs
     INSTALL_COMMAND ${_cocos_openssl_env} "${_cocos_openssl_make}" "-j${_cocos_openssl_jobs}" install_dev
     BUILD_BYPRODUCTS "${_cocos_openssl_stage_dir}/lib/libcrypto.a" "${_cocos_openssl_stage_dir}/lib/libssl.a"
