@@ -22,3 +22,4 @@ source tree.
 | tinyxml2 | `tinyxml2` | `main` snapshot | `8224e427b655b83dae5e2298f1e6919523a78737` | https://github.com/leethomason/tinyxml2 | Zlib | XML parsing | Tests, examples, images, contributed files, and generated documentation omitted. |
 | tinydir | `tinydir` | `master` snapshot | `a4a2db51af5fd5146eb1d7bcc72610c7bfa28ebb` | https://github.com/cxong/tinydir | BSD-2-Clause | Windows directory traversal | Tests and samples omitted. |
 | xxHash | `xxhash` | `0.8.3` | `e626a72bc2321cd320e953a0ccf1584cad60f363` | https://github.com/Cyan4973/xxHash | BSD-2-Clause | Fast hashing | Tests, command-line tools, fuzzing assets, and generated documentation omitted. |
+| Clipper2 | `clipper` | `main` snapshot | `f9c5eb6e14a59f6f5d65fbfb3564519a561cf4fd` | https://github.com/AngusJohnson/Clipper2 | BSL-1.0 | Polygon clipping and triangulation | Official C++ library, license, and README retained; other language ports, examples, benchmarks, and tests omitted. |
