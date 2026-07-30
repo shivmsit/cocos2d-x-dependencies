@@ -81,8 +81,27 @@ elseif(ANDROID)
         "-D__ANDROID_API__=${_cocos_openssl_android_api}"
         "-fPIC"
     )
+elseif(LINUX)
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
+        set(_cocos_openssl_target linux-x86_64)
+    elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64)$")
+        set(_cocos_openssl_target linux-aarch64)
+    else()
+        message(FATAL_ERROR
+            "OpenSSL 4 source build does not support Linux architecture "
+            "'${CMAKE_SYSTEM_PROCESSOR}'")
+    endif()
+    set(_cocos_openssl_env
+        "${CMAKE_COMMAND}" -E env
+        "CC=${CMAKE_C_COMPILER}"
+        "AR=${CMAKE_AR}"
+        "RANLIB=${CMAKE_RANLIB}"
+    )
+    set(_cocos_openssl_platform_args -fPIC)
 else()
-    message(FATAL_ERROR "The source-built OpenSSL wrapper currently supports macOS and Android only")
+    message(FATAL_ERROR
+        "The source-built OpenSSL wrapper does not support "
+        "${CMAKE_SYSTEM_NAME}")
 endif()
 
 find_program(_cocos_openssl_perl perl REQUIRED)
@@ -107,6 +126,7 @@ ExternalProject_Add(cocos_openssl
         ${_cocos_openssl_platform_args}
         no-shared no-pinshared no-tests no-apps no-docs no-demos
         no-fuzz-afl no-fuzz-libfuzzer "--prefix=${_cocos_openssl_stage_dir}"
+        "--libdir=lib"
     BUILD_COMMAND ${_cocos_openssl_env} "${_cocos_openssl_make}" "-j${_cocos_openssl_jobs}" build_libs
     INSTALL_COMMAND ${_cocos_openssl_env} "${_cocos_openssl_make}" "-j${_cocos_openssl_jobs}" install_dev
     BUILD_BYPRODUCTS "${_cocos_openssl_stage_dir}/lib/libcrypto.a" "${_cocos_openssl_stage_dir}/lib/libssl.a"

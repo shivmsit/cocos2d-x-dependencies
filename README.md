@@ -40,9 +40,8 @@ Project links, exact revisions, licenses and Cocos2d-x usage are listed in
 | --- | --- |
 | macOS | Supported |
 | Android with the NDK | Supported |
+| Linux | Supported |
 | Windows | Not tested |
-| Linux | Not tested |
 | iOS | Not tested |
 
-CMake attempts to use the available source integrations on untested platforms
-and skips integrations that are currently platform-specific.
+Other platforms are not currently validated.

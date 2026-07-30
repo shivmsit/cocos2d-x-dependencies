@@ -4,7 +4,7 @@ This manifest identifies the source and version of every library in this
 repository. Revision links point to the exact imported commit; abbreviated
 hashes are shown to keep the page readable.
 
-The [source import policy](README.md#source-import-policy) explains what is
+The [source policy](README.md#source-policy) explains what is
 retained from original projects and which development-only files are removed.
 
 ## Graphics, fonts and image formats
@@ -51,6 +51,12 @@ retained from original projects and which development-only files are removed.
 | [curl](curl/) | [curl/curl](https://github.com/curl/curl) | [8.21.0 · `68720b483728`](https://github.com/curl/curl/tree/68720b4837284335b2d63cb358f8f6ce65f5bc55) | HTTP transfer support | curl |
 | [libuv](uv/) | [libuv/libuv](https://github.com/libuv/libuv) | [1.52.1 · `1cfa32ff59c0`](https://github.com/libuv/libuv/tree/1cfa32ff59c076ffb6ed735bbc8c18361558661f) | WebSocket event loop | MIT |
 | [libwebsockets](websockets/) | [warmcat/libwebsockets](https://github.com/warmcat/libwebsockets) | [`fd1e670ea3f2`](https://github.com/warmcat/libwebsockets/tree/fd1e670ea3f20859592c5ea2321560e1d37444c0) | WebSocket client support | MIT |
+
+## Audio
+
+| Dependency | Project source | Imported version | Used for | License |
+| --- | --- | --- | --- | --- |
+| [miniaudio](miniaudio/) | [mackron/miniaudio](https://github.com/mackron/miniaudio) | [0.11.25 · `9634bedb5b5a`](https://github.com/mackron/miniaudio/tree/9634bedb5b5a2ca38c1ee7108a9358a4e233f14d) | Linux audio playback and decoding | Public Domain or MIT-0 |
 
 ## Data formats and Lua runtime
 
