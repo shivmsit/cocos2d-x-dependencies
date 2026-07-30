@@ -17,6 +17,7 @@ retained from original projects and which development-only files are removed.
 | [libpng](png/) | [pnggroup/libpng](https://github.com/pnggroup/libpng) | [1.6.58 · `3061454d980d`](https://github.com/pnggroup/libpng/tree/3061454d980de7d53608f594194cfac722721d2a) | PNG decoding | libpng-2.0 |
 | [libwebp](webp/) | [WebM libwebp](https://chromium.googlesource.com/webm/libwebp) | [1.6.0 · `4fa219123383`](https://chromium.googlesource.com/webm/libwebp/+/4fa21912338357f89e4fd51cf2368325b59e9bd9) | WebP decoding | BSD-3-Clause |
 | [libtiff](tiff/) | [libtiff/libtiff](https://gitlab.com/libtiff/libtiff) | [4.7.2 · `d01a94be176f`](https://gitlab.com/libtiff/libtiff/-/tree/d01a94be176f5f6a87f7ee1c0b32e65416aa2b4d) | TIFF decoding | libtiff |
+| [GLSL Optimizer](glsl-optimizer/) | [cocos2d/glsl-optimizer](https://github.com/cocos2d/glsl-optimizer) | [`23f7d591a575`](https://github.com/cocos2d/glsl-optimizer/tree/23f7d591a57599883cf08840be0057974dd08afe) | GLSL-to-Metal shader translation | MIT |
 
 ## Compression and core utilities
 

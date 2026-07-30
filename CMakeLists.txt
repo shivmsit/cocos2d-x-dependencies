@@ -142,6 +142,11 @@ if(MACOSX OR LINUX)
     )
 endif()
 
+if(MACOSX OR IOS)
+    include(cmake/glsl-optimizer.cmake)
+    target_link_libraries(external ext_glsl_optimizer)
+endif()
+
 if(LINUX)
     include(cmake/miniaudio.cmake)
     target_link_libraries(external ext_miniaudio)
