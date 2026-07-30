@@ -10,6 +10,7 @@ endif()
 set(_cocos_curl_archive "${_cocos_curl_binary_dir}/build/lib/${_cocos_curl_archive_name}.a")
 set(_cocos_curl_cmake_args
     "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
+    -DCMAKE_NO_SYSTEM_FROM_IMPORTED=ON
     "-DCMAKE_PREFIX_PATH=${COCOS_OPENSSL_STAGE_DIR}"
     "-DOPENSSL_ROOT_DIR=${COCOS_OPENSSL_STAGE_DIR}"
     "-DOPENSSL_INCLUDE_DIR=${COCOS_OPENSSL_STAGE_DIR}/include"

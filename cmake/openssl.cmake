@@ -133,7 +133,11 @@ ExternalProject_Add(cocos_openssl
 )
 
 add_library(OpenSSL::Crypto STATIC IMPORTED GLOBAL)
-set_target_properties(OpenSSL::Crypto PROPERTIES IMPORTED_LOCATION "${_cocos_openssl_stage_dir}/lib/libcrypto.a" INTERFACE_INCLUDE_DIRECTORIES "${_cocos_openssl_stage_dir}/include")
+set_target_properties(OpenSSL::Crypto PROPERTIES
+    IMPORTED_LOCATION "${_cocos_openssl_stage_dir}/lib/libcrypto.a"
+    IMPORTED_NO_SYSTEM TRUE
+    INTERFACE_INCLUDE_DIRECTORIES "${_cocos_openssl_stage_dir}/include"
+)
 if(ANDROID)
     set_property(TARGET OpenSSL::Crypto APPEND PROPERTY
         INTERFACE_LINK_LIBRARIES dl)
@@ -146,7 +150,12 @@ if(ANDROID)
 endif()
 add_dependencies(OpenSSL::Crypto cocos_openssl)
 add_library(OpenSSL::SSL STATIC IMPORTED GLOBAL)
-set_target_properties(OpenSSL::SSL PROPERTIES IMPORTED_LOCATION "${_cocos_openssl_stage_dir}/lib/libssl.a" INTERFACE_INCLUDE_DIRECTORIES "${_cocos_openssl_stage_dir}/include" INTERFACE_LINK_LIBRARIES OpenSSL::Crypto)
+set_target_properties(OpenSSL::SSL PROPERTIES
+    IMPORTED_LOCATION "${_cocos_openssl_stage_dir}/lib/libssl.a"
+    IMPORTED_NO_SYSTEM TRUE
+    INTERFACE_INCLUDE_DIRECTORIES "${_cocos_openssl_stage_dir}/include"
+    INTERFACE_LINK_LIBRARIES OpenSSL::Crypto
+)
 add_dependencies(OpenSSL::SSL cocos_openssl)
 
 # Retain Cocos 3.17's target names for source-tree projects.
