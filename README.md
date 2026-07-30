@@ -1,18 +1,18 @@
 # Cocos2d-x Dependencies
 
 This repository contains the third-party source code used by the maintained
-Cocos2d-x 3.x engine. The engine includes it as the `external/` Git submodule
-and pins the exact commit to use.
+Cocos2d-x 3.x and 4.x engines. Each engine includes it as the `external/` Git
+submodule and pins the exact commit to use.
 
 Dependencies are built with the engine toolchain. No precompiled dependency
 archive or configuration-time download is required.
 
 ## Get the sources
 
-Clone Cocos2d-x with its submodules:
+Clone a maintained Cocos2d-x branch with its submodules:
 
 ```sh
-git clone --recursive --branch v3.18 \
+git clone --recursive --branch v4.1 \
   https://github.com/shivmsit/cocos2d-x.git
 ```
 
