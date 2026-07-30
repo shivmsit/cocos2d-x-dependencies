@@ -574,6 +574,18 @@ static void get_metal_type_size(const glsl_type* type, glsl_precision prec, int&
 	size *= asize;
 }
 
+static bool is_stage_interface_array(PrintGlslMode shaderMode, const ir_variable* variable)
+{
+	if (!variable->type->is_array())
+		return false;
+
+	const unsigned variableMode = variable->data.mode;
+	return (shaderMode == kPrintGlslVertex
+			&& (variableMode == ir_var_shader_out || variableMode == ir_var_shader_inout))
+		|| (shaderMode == kPrintGlslFragment
+			&& (variableMode == ir_var_shader_in || variableMode == ir_var_shader_inout));
+}
+
 void ir_print_metal_visitor::visit(ir_variable *ir)
 {
 	const char *const cent = (ir->data.centroid) ? "centroid " : "";
@@ -583,6 +595,24 @@ void ir_print_metal_visitor::visit(ir_variable *ir)
 	const char *const mode[ir_var_mode_count] = { "", "  ", "  ", "  ", "  ", " ", "out ", "inout ", "", "", "" };
 
 	const char *const interp[] = { "", "smooth ", "flat ", "noperspective " };
+
+	// Metal stage input/output structs cannot contain array fields. Emit one
+	// field per array element; constant array dereferences are renamed below.
+	if (is_stage_interface_array(this->mode_whole, ir))
+	{
+		for (unsigned i = 0; i < ir->type->length; ++i)
+		{
+			if (i > 0)
+				buffer.asprintf_append (";\n");
+			buffer.asprintf_append ("%s%s%s%s",
+									cent, inv, interp[ir->data.interpolation], mode[ir->data.mode]);
+			print_type(buffer, ir, ir->type->element_type(), false);
+			buffer.asprintf_append (" ");
+			print_var_name(ir);
+			buffer.asprintf_append ("_%u", i);
+		}
+		return;
+	}
 
 	// give an id to any variable defined in a function that is not an uniform
 	if ((this->mode == kPrintGlslNone && ir->data.mode != ir_var_uniform))
@@ -1434,6 +1464,15 @@ void ir_print_metal_visitor::visit(ir_dereference_variable *ir)
 
 void ir_print_metal_visitor::visit(ir_dereference_array *ir)
 {
+	ir_variable* variable = ir->array->variable_referenced();
+	ir_constant* index = ir->array_index->as_constant();
+	if (variable && index && is_stage_interface_array(this->mode_whole, variable))
+	{
+		ir->array->accept(this);
+		buffer.asprintf_append ("_%u", index->get_uint_component(0));
+		return;
+	}
+
    ir->array->accept(this);
    buffer.asprintf_append ("[");
    ir->array_index->accept(this);
