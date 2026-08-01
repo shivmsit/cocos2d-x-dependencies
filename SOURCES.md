@@ -12,6 +12,7 @@ retained from original projects and which development-only files are removed.
 | Dependency | Project source | Imported version | Used for | License |
 | --- | --- | --- | --- | --- |
 | [GLFW](glfw/) | [glfw/glfw](https://github.com/glfw/glfw) | [3.4 · `7b6aead9fb88`](https://github.com/glfw/glfw/tree/7b6aead9fb88b3623e3b3725ebb42670cbe4c579) | Desktop windows, input and OpenGL contexts | Zlib |
+| [GLEW](glew/) | [nigels-com/glew](https://github.com/nigels-com/glew) | [2.3.1 source release](https://github.com/nigels-com/glew/releases/tag/glew-2.3.1) | Windows OpenGL function loading | Modified BSD, MIT |
 | [FreeType](freetype/) | [freetype/freetype](https://gitlab.freedesktop.org/freetype/freetype) | [2.14.3 · `0a0221a1347e`](https://gitlab.freedesktop.org/freetype/freetype/-/tree/0a0221a1347e2f1e07c395263540026e9a0aa7c7) | Font rendering | FreeType |
 | [IJG JPEG](jpeg/) | [Independent JPEG Group](https://www.ijg.org/) | [10 source archive](https://www.ijg.org/files/jpegsrc.v10.tar.gz) | JPEG decoding and TIFF support | IJG |
 | [libpng](png/) | [pnggroup/libpng](https://github.com/pnggroup/libpng) | [1.6.58 · `3061454d980d`](https://github.com/pnggroup/libpng/tree/3061454d980de7d53608f594194cfac722721d2a) | PNG decoding | libpng-2.0 |
@@ -83,6 +84,8 @@ Android NDK. Its source is not duplicated in this repository.
 
 ## Important integration notes
 
+* The GLEW 2.3.1 source archive is verified with SHA-256
+  `b64790f94b926acd7e8f84c5d6000a86cb43967bd1e688b03089079799c9e889`.
 * The IJG JPEG 10 archive is verified with SHA-256
   `8b9eaa13242690ebd03e1728ab1edf97a81a78ed6e83624d493655f31ac95ab5`.
 * Box2D's reusable car and donut components are retained because Cocos2d-x

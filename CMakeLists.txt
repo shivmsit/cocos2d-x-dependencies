@@ -58,6 +58,11 @@ target_link_libraries(external
     ext_md5
 )
 
+if(WIN32)
+    include(cmake/glew.cmake)
+    target_link_libraries(external ext_glew)
+endif()
+
 if(_cocos_external_full_platform)
     include(cmake/openssl.cmake)
     include(cmake/websockets.cmake)
@@ -135,7 +140,7 @@ if(ANDROID)
     )
 endif()
 
-if(MACOSX OR LINUX)
+if(MACOSX OR LINUX OR WINDOWS)
     include(cmake/glfw.cmake)
     target_link_libraries(external
         ext_glfw3
