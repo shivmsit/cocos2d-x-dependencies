@@ -67,6 +67,7 @@ retained from original projects and which development-only files are removed.
 | --- | --- | --- | --- | --- |
 | [RapidJSON](json/) | [Tencent/rapidjson](https://github.com/Tencent/rapidjson) | [`24b5e7a8b27f`](https://github.com/Tencent/rapidjson/tree/24b5e7a8b27f42fa16b96fc70aade9106cf7102f) | JSON parsing and serialization | MIT |
 | [tinyxml2](tinyxml2/) | [leethomason/tinyxml2](https://github.com/leethomason/tinyxml2) | [`8224e427b655`](https://github.com/leethomason/tinyxml2/tree/8224e427b655b83dae5e2298f1e6919523a78737) | XML parsing | Zlib |
+| [SQLite](sqlite/) | [SQLite](https://www.sqlite.org/) | [3.53.4 amalgamation](https://www.sqlite.org/2026/sqlite-amalgamation-3530400.zip) | Local storage | Public Domain |
 | [FlatBuffers](flatbuffers/) | [google/flatbuffers](https://github.com/google/flatbuffers) | Cocos-compatible 1.0.0 snapshot | Cocos Studio binary data | Apache-2.0 |
 | [LuaJIT](luajit/) | [LuaJIT/LuaJIT](https://github.com/LuaJIT/LuaJIT) | [2.1 rolling · `2460b3ff93a1`](https://github.com/LuaJIT/LuaJIT/tree/2460b3ff93a1c955de3d62cfc825de7d68dc272e) | Lua 5.1-compatible runtime and JIT | MIT |
 | [tolua++](tolua/) | [LuaDist/toluapp](https://github.com/LuaDist/toluapp) | [1.0.93 · `9feb31ab8b97`](https://github.com/LuaDist/toluapp/tree/9feb31ab8b97eda9561846508ee9e3a2caff8da7) | C++ Lua bindings | MIT |

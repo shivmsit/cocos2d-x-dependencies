@@ -36,6 +36,10 @@ include(cmake/convertutf.cmake)
 include(cmake/poly2tri.cmake)
 include(cmake/md5.cmake)
 
+if(COCOS_EXTERNAL_SQLITE)
+    include(cmake/sqlite.cmake)
+endif()
+
 target_link_libraries(external
     ext_zlib
     ext_box2d
@@ -57,6 +61,10 @@ target_link_libraries(external
     ext_poly2tri
     ext_md5
 )
+
+if(COCOS_EXTERNAL_SQLITE)
+    target_link_libraries(external ext_sqlite)
+endif()
 
 if(WIN32)
     include(cmake/glew.cmake)
