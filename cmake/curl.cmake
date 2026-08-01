@@ -1,6 +1,42 @@
 # curl's CMake configuration probes OpenSSL headers. Run it as a build-time
 # external project after OpenSSL has staged its generated headers and CMake
 # package files; this also prevents host OpenSSL discovery.
+if(WIN32)
+    set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    set(BUILD_STATIC_LIBS ON CACHE BOOL "" FORCE)
+    set(BUILD_STATIC_CURL ON CACHE BOOL "" FORCE)
+    set(BUILD_CURL_EXE OFF CACHE BOOL "" FORCE)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+    set(CURL_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+    set(CURL_DISABLE_INSTALL ON CACHE BOOL "" FORCE)
+    set(CURL_ENABLE_SSL ON CACHE BOOL "" FORCE)
+    set(CURL_USE_SCHANNEL ON CACHE BOOL "" FORCE)
+    set(CURL_USE_OPENSSL OFF CACHE BOOL "" FORCE)
+    set(CURL_ZLIB OFF CACHE BOOL "" FORCE)
+    set(CURL_BROTLI OFF CACHE BOOL "" FORCE)
+    set(CURL_ZSTD OFF CACHE BOOL "" FORCE)
+    set(USE_NGHTTP2 OFF CACHE BOOL "" FORCE)
+    set(USE_LIBIDN2 OFF CACHE BOOL "" FORCE)
+    set(CURL_USE_LIBPSL OFF CACHE BOOL "" FORCE)
+    set(CURL_USE_GSSAPI OFF CACHE BOOL "" FORCE)
+    set(CURL_DISABLE_LDAP ON CACHE BOOL "" FORCE)
+    set(CURL_DISABLE_LDAPS ON CACHE BOOL "" FORCE)
+    set(CURL_USE_LIBSSH2 OFF CACHE BOOL "" FORCE)
+    set(CURL_USE_LIBSSH OFF CACHE BOOL "" FORCE)
+    set(CURL_WERROR OFF CACHE BOOL "" FORCE)
+
+    add_subdirectory("${COCOS_EXTERNAL_ROOT}/curl"
+                     "${CMAKE_CURRENT_BINARY_DIR}/curl")
+    set_target_properties(libcurl_static PROPERTIES FOLDER "External")
+
+    add_library(ext_curl INTERFACE)
+    target_link_libraries(ext_curl INTERFACE libcurl_static)
+    target_include_directories(ext_curl INTERFACE
+        "${COCOS_EXTERNAL_ROOT}/curl/include")
+    return()
+endif()
+
 include(ExternalProject)
 set(_cocos_curl_binary_dir "${CMAKE_CURRENT_BINARY_DIR}/curl")
 set(_cocos_curl_archive_name libcurl)

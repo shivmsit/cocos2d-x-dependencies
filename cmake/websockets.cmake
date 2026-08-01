@@ -1,5 +1,47 @@
 # libwebsockets probes generated OpenSSL headers, so configure it at build
 # time after the engine-owned OpenSSL and libuv static archives are ready.
+if(WIN32)
+    set(LWS_WITH_SHARED OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_STATIC ON CACHE BOOL "" FORCE)
+    set(LWS_WITHOUT_TESTAPPS ON CACHE BOOL "" FORCE)
+    set(LWS_WITHOUT_EXTENSIONS ON CACHE BOOL "" FORCE)
+    # Schannel's backend provides both client and server entry points in the
+    # same source files, so keep server symbols enabled even though Cocos only
+    # creates client connections.
+    set(LWS_WITHOUT_SERVER OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_SSL ON CACHE BOOL "" FORCE)
+    set(LWS_WITH_SCHANNEL ON CACHE BOOL "" FORCE)
+    set(LWS_WITH_LIBUV OFF CACHE BOOL "" FORCE)
+    set(LWS_ROLE_H1 ON CACHE BOOL "" FORCE)
+    set(LWS_ROLE_WS ON CACHE BOOL "" FORCE)
+    set(LWS_ROLE_H2 OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_HTTP2 OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_HTTP3 OFF CACHE BOOL "" FORCE)
+    set(LWS_ROLE_MQTT OFF CACHE BOOL "" FORCE)
+    set(LWS_ROLE_QUIC OFF CACHE BOOL "" FORCE)
+    set(LWS_ROLE_RAW_FILE OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_SECURE_STREAMS OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_UPNG OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_JPEG OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_DLO OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_GZINFLATE OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_ZLIB OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_CGI OFF CACHE BOOL "" FORCE)
+    set(LWS_WITH_SPAWN OFF CACHE BOOL "" FORCE)
+    set(DISABLE_WERROR ON CACHE BOOL "" FORCE)
+
+    add_subdirectory("${COCOS_EXTERNAL_ROOT}/websockets"
+                     "${CMAKE_CURRENT_BINARY_DIR}/websockets")
+    set_target_properties(websockets PROPERTIES FOLDER "External")
+
+    add_library(ext_websockets INTERFACE)
+    target_link_libraries(ext_websockets INTERFACE websockets)
+    target_include_directories(ext_websockets INTERFACE
+        "${COCOS_EXTERNAL_ROOT}/websockets/include"
+        "${CMAKE_CURRENT_BINARY_DIR}/websockets")
+    return()
+endif()
+
 include(ExternalProject)
 set(_cocos_lws_binary_dir "${CMAKE_CURRENT_BINARY_DIR}/websockets")
 set(_cocos_lws_archive "${_cocos_lws_binary_dir}/build/lib/libwebsockets.a")

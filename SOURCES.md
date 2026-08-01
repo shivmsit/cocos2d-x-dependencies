@@ -58,7 +58,8 @@ retained from original projects and which development-only files are removed.
 
 | Dependency | Project source | Imported version | Used for | License |
 | --- | --- | --- | --- | --- |
-| [miniaudio](miniaudio/) | [mackron/miniaudio](https://github.com/mackron/miniaudio) | [0.11.25 · `9634bedb5b5a`](https://github.com/mackron/miniaudio/tree/9634bedb5b5a2ca38c1ee7108a9358a4e233f14d) | Linux audio playback and decoding | Public Domain or MIT-0 |
+| [miniaudio](miniaudio/) | [mackron/miniaudio](https://github.com/mackron/miniaudio) | [0.11.25 · `9634bedb5b5a`](https://github.com/mackron/miniaudio/tree/9634bedb5b5a2ca38c1ee7108a9358a4e233f14d) | Desktop audio playback and decoding | Public Domain or MIT-0 |
+| [stb_vorbis](stb/) | [nothings/stb](https://github.com/nothings/stb) | [`31c1ad374564`](https://github.com/nothings/stb/tree/31c1ad37456438565541f4919958214b6e762fb4) | Ogg Vorbis decoding for miniaudio | Public Domain or MIT |
 
 ## Data formats and Lua runtime
 

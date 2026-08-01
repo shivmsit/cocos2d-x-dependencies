@@ -71,6 +71,9 @@ if(_cocos_external_full_platform)
         ext_crypto
         ext_websockets
     )
+elseif(WIN32)
+    include(cmake/websockets.cmake)
+    target_link_libraries(external ext_websockets)
 else()
     message(STATUS
         "Skipping OpenSSL and libwebsockets source integration on "
@@ -124,7 +127,7 @@ target_include_directories(external INTERFACE
     "${CMAKE_CURRENT_BINARY_DIR}/png"
 )
 
-if(_cocos_external_full_platform)
+if(_cocos_external_full_platform OR WIN32)
     include(cmake/curl.cmake)
     target_link_libraries(external ext_curl)
 endif()
@@ -152,7 +155,7 @@ if(MACOSX OR IOS)
     target_link_libraries(external ext_glsl_optimizer)
 endif()
 
-if(LINUX)
+if(LINUX OR WINDOWS)
     include(cmake/miniaudio.cmake)
     target_link_libraries(external ext_miniaudio)
 endif()
