@@ -74,11 +74,23 @@ elseif(ANDROID)
         "-DANDROID_PLATFORM=${ANDROID_PLATFORM}"
         "-DANDROID_STL=${ANDROID_STL}"
     )
+elseif(IOS)
+    list(APPEND _cocos_lws_cmake_args
+        -DCMAKE_SYSTEM_NAME=iOS
+        "-DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}"
+        "-DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}"
+        "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}"
+    )
+endif()
+set(_cocos_lws_generator_args)
+if(IOS)
+    set(_cocos_lws_generator_args CMAKE_GENERATOR "Unix Makefiles")
 endif()
 ExternalProject_Add(cocos_websockets
     DEPENDS cocos_openssl uv_a
     SOURCE_DIR "${COCOS_EXTERNAL_ROOT}/websockets"
     BINARY_DIR "${_cocos_lws_binary_dir}/build"
+    ${_cocos_lws_generator_args}
     CMAKE_ARGS ${_cocos_lws_cmake_args}
     INSTALL_COMMAND ""
     BUILD_BYPRODUCTS "${_cocos_lws_archive}"
@@ -86,7 +98,7 @@ ExternalProject_Add(cocos_websockets
 set(_cocos_lws_link_libraries
     OpenSSL::SSL OpenSSL::Crypto ext_uv
 )
-if(MACOSX)
+if(APPLE)
     list(APPEND _cocos_lws_link_libraries
         "-framework Security"
         "-framework CoreFoundation"

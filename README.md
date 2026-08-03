@@ -42,6 +42,6 @@ Project links, exact revisions, licenses and Cocos2d-x usage are listed in
 | Android with the NDK | Supported |
 | Linux | Supported |
 | Windows | Supported |
-| iOS | Not tested |
+| iOS | Supported |
 
 Other platforms are not currently validated.

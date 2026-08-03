@@ -4,7 +4,7 @@ project(external)
 set(COCOS_EXTERNAL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")
 
 set(_cocos_external_full_platform FALSE)
-if(MACOSX OR ANDROID OR LINUX)
+if(MACOSX OR IOS OR ANDROID OR LINUX)
     set(_cocos_external_full_platform TRUE)
 else()
     message(STATUS

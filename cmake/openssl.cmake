@@ -81,6 +81,42 @@ elseif(ANDROID)
         "-D__ANDROID_API__=${_cocos_openssl_android_api}"
         "-fPIC"
     )
+elseif(IOS)
+    list(LENGTH CMAKE_OSX_ARCHITECTURES _cocos_openssl_arch_count)
+    if(NOT _cocos_openssl_arch_count EQUAL 1)
+        message(FATAL_ERROR
+            "OpenSSL for iOS requires exactly one CMAKE_OSX_ARCHITECTURES value")
+    endif()
+    list(GET CMAKE_OSX_ARCHITECTURES 0 _cocos_openssl_arch)
+
+    if(CMAKE_OSX_SYSROOT MATCHES "iphonesimulator|iPhoneSimulator")
+        if(_cocos_openssl_arch STREQUAL "arm64")
+            set(_cocos_openssl_target iossimulator-arm64-xcrun)
+        elseif(_cocos_openssl_arch STREQUAL "x86_64")
+            set(_cocos_openssl_target iossimulator-x86_64-xcrun)
+        else()
+            message(FATAL_ERROR
+                "OpenSSL does not support iOS Simulator architecture "
+                "'${_cocos_openssl_arch}'")
+        endif()
+        set(_cocos_openssl_min_version_flag
+            "-mios-simulator-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    elseif(_cocos_openssl_arch STREQUAL "arm64")
+        set(_cocos_openssl_target ios64-xcrun)
+        set(_cocos_openssl_min_version_flag
+            "-miphoneos-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    else()
+        message(FATAL_ERROR
+            "OpenSSL does not support iOS device architecture "
+            "'${_cocos_openssl_arch}'")
+    endif()
+
+    set(_cocos_openssl_env "${CMAKE_COMMAND}" -E env)
+    set(_cocos_openssl_platform_args)
+    if(CMAKE_OSX_DEPLOYMENT_TARGET)
+        list(APPEND _cocos_openssl_platform_args
+            "${_cocos_openssl_min_version_flag}")
+    endif()
 elseif(LINUX)
     if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64|AMD64)$")
         set(_cocos_openssl_target linux-x86_64)
